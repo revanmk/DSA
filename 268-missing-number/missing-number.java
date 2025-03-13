@@ -1,6 +1,6 @@
 class Solution {
     public int missingNumber(int[] nums) {
-         int n = nums.length; // Since nums contains n elements, the numbers range from 0 to n.
+        int n = nums.length; 
         int expectedSum = n * (n + 1) / 2;
         int actualSum = 0;
 
