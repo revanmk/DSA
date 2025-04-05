@@ -13,7 +13,6 @@ class Solution
     }
     public int subsetXORSum(int[] nums) 
     {
-        sum=0;
         xorsum(nums,0,0);
         return sum;
     }
