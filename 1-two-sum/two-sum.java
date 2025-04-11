@@ -1,4 +1,5 @@
-/*class Solution {
+//Optimal Solution
+class Solution {
     public int[] twoSum(int[] nums, int target) {
         HashMap<Integer,Integer> hm=new HashMap<>();
         int ans[]=new int[2];
@@ -16,8 +17,8 @@
         return ans;
     }
 }
-*/
 // Brute Force
+/*
 class Solution{
     public int[] twoSum(int nums[],int target){
         int n=nums.length;
@@ -31,3 +32,4 @@ class Solution{
         return new int[]{};
     }
 }
+*/
