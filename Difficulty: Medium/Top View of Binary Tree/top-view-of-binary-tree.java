@@ -22,92 +22,43 @@ class Node{
         right=null;
     }
 }
-
-
+*/
+class Pair{
+    Node val;
+    int hd;
+    Pair(Node a,int b){
+        val=a;
+        hd=b;
+    }
+}
 
 class Solution {
     // Function to return a list of nodes visible from the top view
     // from left to right in Binary Tree.
     static ArrayList<Integer> topView(Node root) {
-         ArrayList<Integer> ans=new ArrayList<>();
+        ArrayList<Integer>list=new ArrayList<>();
         if(root==null)
-            return ans;
-        if(!isLeaf(root))
-            ans.add(root.data);
-        leftBoundary(root.left,ans);
-        rightBoundary(root.right,ans);
-        return ans;
-    }
-    static boolean isLeaf(Node root){
-        return node.left==null && node.right==null;
-    }
-    public void leftBoundary(Node root,ArrayList<Integer> ans){
-        if(root==null)
-            return;
-        if(!isLeaf(root))
-            ans.add(root.data);
-        leftBoundary(root.left,ans);
-        leftBoundary(root.right,ans);
-            
-    }
-    public void rightBoundary(Node root,ArrayList<Integer> res){
-         if(root==null || isLeaf(root))
-            return;
-        if(root.right!=null)
-            collectRightBoundary(root.right,res);
-        else if(root.left!=null)
-            collectRightBoundary(root.left,res);
-        res.add(root.data);
-    }
-}
-*/
-class Solution {
-    // Function to return a list of nodes visible from the top view of Binary Tree.
-    static ArrayList<Integer> topView(Node root) {
-        ArrayList<Integer> result = new ArrayList<>();
-        if (root == null) return result;
-
-        // TreeMap to store horizontal distance -> node value
-        Map<Integer, Integer> map = new TreeMap<>();
-        Queue<Pair> queue = new LinkedList<>();
-
-        queue.add(new Pair(root, 0)); // Root node with horizontal distance 0
-
-        while (!queue.isEmpty()) {
-            Pair temp = queue.poll();
-            Node node = temp.node;
-            int hd = temp.hd;
-
-            // If horizontal distance is not in map, add the first seen node
-            if (!map.containsKey(hd)) {
-                map.put(hd, node.data);
-            }
-
-            // Push left and right children with updated horizontal distances
-            if (node.left != null) queue.add(new Pair(node.left, hd - 1));
-            if (node.right != null) queue.add(new Pair(node.right, hd + 1));
+            return list;
+        TreeMap<Integer,Integer> map=new TreeMap<>();
+        Queue<Pair> q=new LinkedList<>();
+        q.add(new Pair(root,0));
+        while(!q.isEmpty()){
+            Pair temp=q.poll();
+            Node n=temp.val;
+            int d=temp.hd;
+            if(!map.containsKey(d))
+                map.put(d,n.data);
+            if(n.left!=null)
+                q.add(new Pair(n.left,d-1));
+            if(n.right!=null)
+                q.add(new Pair(n.right,d+1));
         }
-
-        // Extract values from TreeMap in sorted order of horizontal distances
-        for (int value : map.values()) {
-            result.add(value);
+        for(int values:map.values())
+            list.add(values);
+        return list;
+        
         }
-
-        return result;
-    }
 }
-
-// Pair class to store node with its horizontal distance
-class Pair {
-    Node node;
-    int hd;
-
-    Pair(Node node, int hd) {
-        this.node = node;
-        this.hd = hd;
-    }
-}
-
 
 
 //{ Driver Code Starts.
