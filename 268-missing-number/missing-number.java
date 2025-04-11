@@ -1,5 +1,4 @@
-// Optimal Solution
-/*
+// Optimal Solution   TC:O(n)  SC:O(1)
 class Solution {
     public int missingNumber(int[] nums) {
         int n = nums.length; 
@@ -13,8 +12,8 @@ class Solution {
         return expectedSum - actualSum;
     }
 }
-*/
-//Brute-Force Approach
+//Brute-Force Approach   TC:O(n*n)  SC:O(1)
+/*
 class Solution{
     public int missingNumber(int [] nums){
         int n=nums.length;
@@ -33,3 +32,4 @@ class Solution{
         return n;
     }
 }
+*/
