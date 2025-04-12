@@ -26,8 +26,6 @@ class Solution {
             k++;
             right++;
         }
-        for(int i=0;i<nums.length;i++)
-            System.out.println(nums[i]);
         if (nums.length % 2 == 1) {
             return nums[nums.length / 2];
         } else {
