@@ -65,20 +65,35 @@ class Solution{
     }
 }
 */
-//Swapping  TC:O(n)  SC:O(1)
+// //Swapping  TC:O(n)  SC:O(1)
+// class Solution {
+//     public List<Integer> findDisappearedNumbers(int[] nums) {
+//         List<Integer> ans = new ArrayList<>();
+//         for (int i = 0; i < nums.length; i++) {
+//             while (nums[i] != nums[nums[i] - 1]) {
+//                 int temp = nums[i];
+//                 nums[i] = nums[temp - 1];
+//                 nums[temp - 1] = temp;
+//             }
+//         }
+
+//         for (int i = 0; i < nums.length; i++) {
+//             if (nums[i] != i + 1)
+//                 ans.add(i + 1);
+//         }
+//         return ans;
+//     }
+
+// }
 class Solution {
     public List<Integer> findDisappearedNumbers(int[] nums) {
         List<Integer> ans = new ArrayList<>();
         for (int i = 0; i < nums.length; i++) {
-            while (nums[i] != nums[nums[i] - 1]) {
-                int temp = nums[i];
-                nums[i] = nums[temp - 1];
-                nums[temp - 1] = temp;
-            }
+            nums[Math.abs(nums[i])-1]=-Math.abs(nums[Math.abs(nums[i])-1]);
         }
 
         for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != i + 1)
+            if (nums[i]>0)
                 ans.add(i + 1);
         }
         return ans;
