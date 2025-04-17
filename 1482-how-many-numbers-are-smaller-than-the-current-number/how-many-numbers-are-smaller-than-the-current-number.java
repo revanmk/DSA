@@ -1,3 +1,4 @@
+//Using Map  TC:O(n)  SC:O(n)
 // class Solution {
 //     public int[] smallerNumbersThanCurrent(int[] nums) {
 //         Map<Integer, Integer> map = new HashMap<>();
@@ -14,7 +15,7 @@
 //         return copy;
 //     }
 // }
-//Using Count Array  TC:O(n)  SC:O(n)
+//Using Count Array  TC:O(n)  SC:O(1)
 class Solution{
     public int[] smallerNumbersThanCurrent(int[] nums){
         int count[]=new int[101];
