@@ -5,9 +5,7 @@ Array.prototype.last = function() {
     let ans;
     if(this.length==0)
         return -1;
-    for(let i=0;i<this.length;i++)
-        ans=this[i];
-    return ans;
+    return this[this.length-1];
 };
 
 /**
