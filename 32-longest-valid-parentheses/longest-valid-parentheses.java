@@ -12,7 +12,8 @@ class Solution {
                 st.pop();
                 if(st.isEmpty())
                     st.push(i);
-                maxlen=Math.max(maxlen,i-st.peek());
+                else
+                    maxlen=Math.max(maxlen,i-st.peek());
             }
         }
         return maxlen;
