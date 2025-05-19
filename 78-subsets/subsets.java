@@ -1,18 +1,19 @@
 class Solution {
+    private List<List<Integer>> ans=new ArrayList<>();
     public List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> ans=new ArrayList<>();
         int n=nums.length;
-        for(int i=0;i<(1<<n);i++)
-        {
-            List<Integer> temp=new ArrayList<>();
-            for(int j=0;j<n;j++)
-            {
-                if((i&(1<<j))!=0)
-                    temp.add(nums[j]);
-            }
-            ans.add(temp);
-            
-        }
+        raparapa(new ArrayList<>(),0,n,nums);
         return ans;
+    }
+    public void raparapa(List<Integer> curr,int index,int n,int [] nums){
+        if(index>=n){
+            ans.add(new ArrayList<>(curr));
+            return;
+        }
+        curr.add(nums[index]);
+        raparapa(curr,index+1,n,nums);
+        curr.remove(curr.size()-1);
+        raparapa(curr,index+1,n,nums);
+
     }
 }
