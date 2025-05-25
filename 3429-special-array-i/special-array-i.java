@@ -3,9 +3,10 @@ class Solution {
         boolean check=isEven(nums[0]);
         for(int i=1;i<nums.length;i++)
         {
-            if(isEven(nums[i])==check)
+            boolean hahaha=isEven(nums[i]);
+            if(hahaha==check)
                 return false;
-            check=isEven(nums[i]);
+            check=hahaha;
         }
         return true;
     }
