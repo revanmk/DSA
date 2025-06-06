@@ -1,29 +1,24 @@
 class Solution {
+    private List<String> ans=new ArrayList<>();
     public List<String> generateParenthesis(int n) {
-        List<String> ans = new ArrayList<>();
-        generate(n, 0, 0, ans, new StringBuilder());
+        generate(new StringBuilder(),0,0,n);
         return ans;
     }
-
-    public static void generate(int n, int open, int close, List<String> ans, StringBuilder current) {
-        // Base case: If we have placed all 2 * n parentheses, add to the result
-        if (current.length() == 2 * n) {
-            ans.add(current.toString());
-            return;
+    public void generate(StringBuilder st,int open,int close,int n){
+        if(st.length()==2*n)
+        {
+           ans.add(st.toString()); 
         }
-
-        // Add '(' if we still have remaining open parentheses
-        if (open < n) {
-            current.append("(");
-            generate(n, open + 1, close, ans, current);
-            current.deleteCharAt(current.length() - 1); // Backtrack
+        if(open<n)
+        {
+            st.append("(");
+            generate(st,open+1,close,n);
+            st.deleteCharAt(st.length()-1);
         }
-
-        // Add ')' only if it does not exceed the number of open '('
-        if (close < open) {
-            current.append(")");
-            generate(n, open, close + 1, ans, current);
-            current.deleteCharAt(current.length() - 1); // Backtrack
+        if(close<open){
+            st.append(")");
+            generate(st,open,close+1,n);
+            st.deleteCharAt(st.length()-1);
         }
     }
 }
