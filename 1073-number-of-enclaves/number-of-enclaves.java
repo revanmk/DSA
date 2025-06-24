@@ -23,9 +23,9 @@ class Solution {
         }
         int count=0;
 
-        for(int i=0;i<rows;i++)
+        for(int i=1;i<rows-1;i++)
         {
-            for(int j=0;j<cols;j++)
+            for(int j=1;j<cols-1;j++)
             {
                 if(grid[i][j]==1 && vis[i][j]==0){
                     count++;
