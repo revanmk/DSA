@@ -1,22 +1,18 @@
 class Solution {
     public int maxSum(int[] nums) {
-        HashSet<Integer> set = new HashSet<>();
-        int max=Integer.MIN_VALUE;
+        TreeSet<Integer> set = new TreeSet<>();
         for(int i=0;i<nums.length;i++){
             set.add(nums[i]);
-            max=Math.max(max,nums[i]);
-        }
-        if(max<0){
-            return max;
         }
         int sum=0;
-        int ans=nums[0];
+        int ans=Integer.MIN_VALUE;
         for(int i:set){
-            if(i<0){
-                continue;
-            }
             sum+=i;
+            ans=Math.max(ans,sum);
+            if(sum<0){
+                sum=0;
+            }
         }
-        return sum;
+        return ans;
     }
 }
