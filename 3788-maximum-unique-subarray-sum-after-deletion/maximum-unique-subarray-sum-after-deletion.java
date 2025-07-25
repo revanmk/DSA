@@ -1,7 +1,8 @@
 class Solution {
     public int maxSum(int[] nums) {
         TreeSet<Integer> set = new TreeSet<>();
-        for(int i=0;i<nums.length;i++){
+        int n=nums.length;
+        for(int i=0;i<n;i++){
             set.add(nums[i]);
         }
         int sum=0;
