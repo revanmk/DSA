@@ -1,18 +1,20 @@
 class Solution {
     public long countVowels(String word) {
-        Set<Character> vowels = new HashSet<>();
-        vowels.add('a');
-        vowels.add('e');
-        vowels.add('i');
-        vowels.add('o');
-        vowels.add('u');
-        int len = word.length();
-        long a=0;
-        for(int i=0;i<len;i++){
-            if(vowels.contains(word.charAt(i))){
-                a+=(long)(i+1)*(len-i);
+        boolean[] vowel = new boolean[128];
+        vowel['a']=vowel['e']=vowel['i']=vowel['o']=vowel['u']=true;
+        long prev=0;
+        int curr=0;
+        long ans=0;
+        for(char ch : word.toCharArray()){
+            curr++;
+            if(vowel[ch]){
+                ans+=prev+curr;
+                prev+=curr;
+            }
+            else{
+                ans+=prev;
             }
         }
-        return a;
+        return ans;
     }
 }
