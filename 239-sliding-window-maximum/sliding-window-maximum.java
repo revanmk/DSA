@@ -7,7 +7,7 @@ class Solution {
         int ans[] = new int[len - k + 1];
         int index = 0;
         for (int i = 0; i < len; i++) {
-            while (!dq.isEmpty() && i - dq.getFirst() == k) {
+            if(!dq.isEmpty() && i - dq.getFirst() == k) {
                 dq.removeFirst();
             }
             while (!dq.isEmpty() && nums[dq.getLast()] < nums[i]) {
