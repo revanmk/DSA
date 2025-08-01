@@ -8,10 +8,10 @@ class Solution {
         int index = 0;
         for (int i = 0; i < len; i++) {
             if(!dq.isEmpty() && dq.getFirst() <= i-k) {
-                dq.removeFirst();
+                dq.pollFirst();
             }
             while (!dq.isEmpty() && nums[dq.getLast()] < nums[i]) {
-                dq.removeLast();
+                dq.pollLast();
             }
             dq.addLast(i);
             if (i >= k - 1) {
