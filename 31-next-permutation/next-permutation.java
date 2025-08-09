@@ -1,40 +1,36 @@
 class Solution {
     public void nextPermutation(int[] nums) {
-        int ind = -1;
-        // Find the first decreasing element from the end
-        for (int i = nums.length - 2; i >= 0; i--) {
-            if (nums[i] < nums[i + 1]) {
-                ind = i;
+        int len = nums.length;
+        int ind=-1;
+        for(int i=len-2;i>=0;i--){
+            if(nums[i]<nums[i+1]){
+                ind=i;
                 break;
             }
         }
-        // If no such element is found, reverse the entire array
-        if (ind == -1) {
-            reverse(nums, 0, nums.length - 1);
+        if(ind==-1){
+            reverse(0,len-1,nums);
             return;
         }
-        // Find the element just larger than nums[ind] from the end
-        for (int i = nums.length - 1; i > ind; i--) {
-            if (nums[i] > nums[ind]) {
-                swap(nums, i, ind);
+        for(int i=len-1;i>ind;i--){
+            if(nums[i]>nums[ind]){
+                int temp = nums[i];
+                nums[i]=nums[ind];
+                nums[ind]=temp;
                 break;
             }
         }
-        // Reverse the elements after ind
-        reverse(nums, ind + 1, nums.length - 1);
+        nums=reverse(ind+1,len-1,nums);
     }
-
-    private void reverse(int[] nums, int start, int end) {
-        while (start < end) {
-            swap(nums, start, end);
+    public static int[] reverse(int start, int end, int[] nums){
+        while(start<end){
+            int temp =  nums[start];
+            nums[start]=nums[end];
+            nums[end]=temp;
             start++;
             end--;
         }
+        return nums;
     }
 
-    private void swap(int[] nums, int i, int j) {
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
-    }
 }
