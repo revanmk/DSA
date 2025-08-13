@@ -1,21 +1,30 @@
 class Solution {
     public int kthSmallest(int[][] matrix, int k) {
-        int n =matrix.length;
-        TreeMap<Integer,Integer> map = new TreeMap<>();
-        for(int i=0;i<n;i++){
-            for(int j=0;j<n;j++){
-                map.put(matrix[i][j],map.getOrDefault(matrix[i][j],0)+1);
+        int n = matrix.length;
+        int low = matrix[0][0];
+        int high = matrix[n-1][n-1];
+        int ans=-1;
+        while(low<=high){
+            int mid = (low+high)>>1;
+            if(countLessOrEqual(mid,matrix,n)>=k){
+                ans=mid;
+                high=mid-1;
+            }
+            else{
+                low = mid+1;
             }
         }
-        int count=k;
-        for(int key : map.keySet()){
-            int ele = key;
-            int val = map.get(key);
-            k-=val;
-            if(k<=0){
-                return ele;
+        return ans;
+    }
+    public static int countLessOrEqual(int mid, int[][] matrix,int n){
+        int count=0;
+        int c=n-1;
+        for(int r=0;r<n;++r){
+            while(c>=0 && matrix[r][c]>mid){
+                --c;
             }
+            count+=(c+1);
         }
-        return 0;
+        return count;
     }
 }
