@@ -19,9 +19,10 @@ class Solution {
     public static int countLessOrEqual(int mid, int[][] matrix,int n){
         int count=0;
         int c=n-1;
-        for(int r=0;r<n;++r){
+        for(int r=0;r<n;r++)
+        {
             while(c>=0 && matrix[r][c]>mid){
-                --c;
+                c--;
             }
             count+=(c+1);
         }
