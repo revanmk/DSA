@@ -1,8 +1,9 @@
 class Solution {
     List<Integer> specials = new ArrayList<>();
-
-    public int nonSpecialCount(int l, int r) {
+    Solution(){
         generateSpecialNumbers();
+    }
+    public int nonSpecialCount(int l, int r) {
         int ans = r-l+1;
         for(int a : specials){
             if(a>=l && a<=r){
